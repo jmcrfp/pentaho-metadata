@@ -354,11 +354,10 @@ public class SqlGenerator {
           //
           // Using the column name and not the alias caused an issue on Apache Derby.
           //
-          for ( String key : columnsMap.keySet() ) {
-            String value = columnsMap.get( key );
-            if ( value.equals( businessColumn.getId() ) ) {
+          for ( Map.Entry<String, String> entry : columnsMap.entrySet() ) {
+            if ( entry.getValue().equals( businessColumn.getId() ) ) {
               // Found it: the alias is the key
-              alias = key;
+              alias = entry.getKey();
               break;
             }
           }
